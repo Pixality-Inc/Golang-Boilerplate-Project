@@ -1,0 +1,34 @@
+---
+api:
+  info:
+    title: Pixality API
+    version: 1.0
+    description: |-
+      Pixality API
+  servers:
+    - url:
+      description: Current Host
+  security: { }
+  imports:
+    - [ '', 'github.com/pixality-inc/golang-core/gen' ]
+    - [ '', 'github.com/pixality-inc/golang-boilerplate-project/internal/protocol' ]
+  routerImports:
+    - [ '', 'github.com/pixality-inc/golang-core/http' ]
+    - [ '', 'github.com/pixality-inc/golang-boilerplate-project/internal/api/controllers' ]
+  controllerImports:
+    - [ '', 'github.com/pixality-inc/golang-boilerplate-project/internal/protocol' ]
+  serverImports: [ ]
+  routes:
+    /api/1.0/books:
+      get:
+        id: BooksGet
+        tags: [ books ]
+        title: Get books
+        responseModels: [ '400', '401', '403', '404', '500', '503', 'protocol.BooksResponse' ]
+  errors:
+    400: 'protocol.ErrorResponse'
+    401: 'protocol.ErrorResponse'
+    403: 'protocol.ErrorResponse'
+    404: 'protocol.ErrorResponse'
+    500: 'protocol.ErrorResponse'
+    503: 'protocol.ErrorResponse'

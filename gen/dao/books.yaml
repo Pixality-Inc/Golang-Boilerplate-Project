@@ -1,0 +1,17 @@
+---
+name: books
+model_name: book
+dao_imports:
+  - [ "", "github.com/pixality-inc/golang-boilerplate-project/internal/types" ]
+fields:
+  - name: id
+    type: uuid
+    unique: true
+    primary: true
+    default: gen_random_uuid()
+    data_type: types.BookId
+  - name: title
+    type: varchar(255)
+  - name: created_at
+    type: timestamp
+    default: NOW()

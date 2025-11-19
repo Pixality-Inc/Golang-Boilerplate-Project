@@ -1,0 +1,34 @@
+logger:
+  level: debug
+  format: text
+  colors: true
+  timestamp: true
+  stacktrace: false
+  stacktrace_errors: true
+
+http:
+  host: 0.0.0.0
+  port: 8080
+  shutdown_timeout: 5s
+
+healthcheck:
+  host: 0.0.0.0
+  port: 8001
+  shutdown_timeout: 5s
+
+metrics:
+  host: 0.0.0.0
+  port: 9090
+  shutdown_timeout: 5s
+
+database:
+  name: database
+  host: 127.0.0.1
+  port: 5432
+  user: postgres
+  password: postgres
+  database: pixality
+  schema: public
+  pool_max: 2
+  app_name: pixality_dev
+  connection_timeout: 5

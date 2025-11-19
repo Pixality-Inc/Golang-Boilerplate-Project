@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgis/postgis:14-3.4
+    container_name: db
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pixality
+    healthcheck:
+      test: [ "CMD-SHELL", "psql -h 127.0.0.1 -p 5432 -U postgres -d pixality -c 'SELECT 1' > /dev/null 2>&1" ]
+      interval: 10s
+      timeout: 1m
+      retries: 10
+    volumes:
+      - dev_pgdata:/var/lib/postgresql/data
+    networks:
+      - dev
+
+networks:
+  dev:
+    name: dev
+    driver: bridge
+
+volumes:
+  dev_pgdata:
+    name: dev_pgdata

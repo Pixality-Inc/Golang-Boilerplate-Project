@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package protocol;
+
+option go_package = "./internal/protocol";
+
+message OkResponse {
+
+}
+
+message Error {
+  string message = 1;
+}
+
+message ErrorResponse {
+  Error error = 1;
+}
+
+message Book {
+  string id = 1;
+  string title = 2;
+}
+
+message BooksResponse {
+  int32 total = 1;
+  repeated Book books = 2;
+}
