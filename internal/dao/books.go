@@ -10,6 +10,7 @@ import (
 	"github.com/pixality-inc/golang-core/util"
 )
 
+//nolint:iface
 type Book interface {
 	BookGetter
 }
@@ -23,7 +24,6 @@ type BooksDao interface {
 
 func (d *BooksDaoImpl) Create(ctx context.Context, queryRunner postgres.QueryRunner, a Book) error {
 	query, err := postgres.BuildSimpleInsertQuery(d.baseInsertQuery(), d.insertColumns, a)
-
 	if err != nil {
 		return fmt.Errorf("sql failed to build insert for query %v: %w", query, err)
 	}
@@ -37,7 +37,6 @@ func (d *BooksDaoImpl) Create(ctx context.Context, queryRunner postgres.QueryRun
 
 func (d *BooksDaoImpl) CreateBatch(ctx context.Context, queryRunner postgres.QueryRunner, arr []Book) error {
 	query, err := postgres.BuildBulkInsertQuery(d.baseInsertQuery(), d.insertColumns, arr)
-
 	if err != nil {
 		return fmt.Errorf("sql failed to build insert for query %v: %w", query, err)
 	}

@@ -35,9 +35,9 @@ func (c *BooksController) BooksGet(ctx context.Context) (*protocol.BooksResponse
 	for _, row := range booksRows {
 		responseBooks = append(responseBooks, renderBook(row))
 	}
-	
+
 	response := &protocol.BooksResponse{
-		Total: int32(len(booksRows)),
+		Total: int32(len(booksRows)), //nolint:gosec
 		Books: responseBooks,
 	}
 

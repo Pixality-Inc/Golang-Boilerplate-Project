@@ -11,7 +11,7 @@ import (
 
 // BookId
 
-type BookId uuid.UUID
+type BookId uuid.UUID // nolint:recvcheck
 
 var emptyBookId = BookId(uuid.Nil)
 
